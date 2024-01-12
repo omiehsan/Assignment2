@@ -1,6 +1,6 @@
-import 'package:assignment_2/show_dialogues.dart';
 import 'package:flutter/material.dart';
 import 'cart_item.dart';
+import 'show_dialogues.dart';
 
 class ShoppingCart extends StatefulWidget {
   @override
@@ -12,8 +12,29 @@ class _ShoppingCartState extends State<ShoppingCart> {
   double unitPrice = 0; // Set your default unit price here
 
   List<Map<String, dynamic>> items = [
-    // Your item data...
+    {
+      'productName': 'Product A',
+      'productColor': 'Blue',
+      'productSize': 'L',
+      'imageURL': 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+      'price': 50.0, // Replace with actual price for Product A
+    },
+    {
+      'productName': 'Product B',
+      'productColor': 'Green',
+      'productSize': 'M',
+      'imageURL': 'https://example.com/product_b_image.jpg',
+      'price': 30.0, // Replace with actual price for Product B
+    },
+    {
+      'productName': 'Product C',
+      'productColor': 'Red',
+      'productSize': 'S',
+      'imageURL': 'https://example.com/product_c_image.jpg',
+      'price': 20.0, // Replace with actual price for Product C
+    },
   ];
+
 
   void _addItem(int index) {
     setState(() {
@@ -83,3 +104,4 @@ class _ShoppingCartState extends State<ShoppingCart> {
     );
   }
 }
+
