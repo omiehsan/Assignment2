@@ -9,32 +9,30 @@ class ShoppingCart extends StatefulWidget {
 
 class _ShoppingCartState extends State<ShoppingCart> {
   List<int> itemQuantities = List.filled(5, 0);
-  double unitPrice = 0; // Set your default unit price here
 
   List<Map<String, dynamic>> items = [
     {
-      'productName': 'Product A',
-      'productColor': 'Blue',
+      'productName': 'T-Shirt',
+      'productColor': 'White',
       'productSize': 'L',
-      'imageURL': 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
-      'price': 50.0, // Replace with actual price for Product A
+      'imageURL': 'https://www.king-apparel.com/media/wysiwyg/180723-king-apparel-tshirts-002.jpg',
+      'price': 100.0,
     },
     {
-      'productName': 'Product B',
-      'productColor': 'Green',
+      'productName': 'Jeans',
+      'productColor': 'Blue',
       'productSize': 'M',
-      'imageURL': 'https://example.com/product_b_image.jpg',
-      'price': 30.0, // Replace with actual price for Product B
+      'imageURL': 'https://ksubi.com/cdn/shop/collections/Denim_Category_Slider_WomensPointer_01c0faa3-ad98-4174-b069-99cae41bc29f.jpg?v=1688537262',
+      'price': 80.0,
     },
     {
-      'productName': 'Product C',
-      'productColor': 'Red',
+      'productName': 'Pullover',
+      'productColor': 'Sky',
       'productSize': 'S',
-      'imageURL': 'https://example.com/product_c_image.jpg',
-      'price': 20.0, // Replace with actual price for Product C
+      'imageURL': 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/454a5346-64ef-4467-8680-bd3ac29650c7/jordan-23-engineered-fleece-pullover-HJ7cbT.png',
+      'price': 130.0,
     },
   ];
-
 
   void _addItem(int index) {
     setState(() {
@@ -68,20 +66,31 @@ class _ShoppingCartState extends State<ShoppingCart> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Text(
+          'My Bag',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         Expanded(
           child: ListView.builder(
-            itemCount: items.length,
+            itemCount: items.length * 2 - 1,
             itemBuilder: (context, index) {
+              if (index.isOdd) {
+                return SizedBox(height: 20);
+              }
+              final cardIndex = index ~/ 2;
               return CartItem(
-                index: index,
-                itemCount: itemQuantities[index],
-                unitPrice: items[index]['price'],
+                index: cardIndex,
+                itemCount: itemQuantities[cardIndex],
+                unitPrice: items[cardIndex]['price'],
                 onItemAdded: _addItem,
                 onItemRemoved: _removeItem,
-                productName: items[index]['productName'],
-                productColor: items[index]['productColor'],
-                productSize: items[index]['productSize'],
-                imageURL: items[index]['imageURL'],
+                productName: items[cardIndex]['productName'],
+                productColor: items[cardIndex]['productColor'],
+                productSize: items[cardIndex]['productSize'],
+                imageURL: items[cardIndex]['imageURL'],
               );
             },
           ),
@@ -104,4 +113,3 @@ class _ShoppingCartState extends State<ShoppingCart> {
     );
   }
 }
-
