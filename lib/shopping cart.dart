@@ -108,7 +108,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Total Price:'),
-                  Text('\$${calculateTotalPrice().toStringAsFixed(2)}'),
+                  Text('\$${calculateTotalPrice().toStringAsFixed(2)}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                 ],
               ),
               SizedBox(height: 20,),

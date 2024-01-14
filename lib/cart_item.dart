@@ -140,7 +140,7 @@ class _CartItemState extends State<CartItem> {
                                               Icons.add, widget.onItemAdded))),
                                 ],
                               ),
-                              Text('\$${widget.unitPrice}',style: TextStyle(fontSize: 14),),
+                              Text('\$${widget.unitPrice}',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
                             ],
                           ),
                         ],

@@ -16,7 +16,7 @@ class DialogUtils {
             textAlign: TextAlign.center, // Center-align the text
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
+            borderRadius: BorderRadius.circular(18.0), // Adjust the radius as needed
           ),
           actions: [
             Center(
@@ -58,7 +58,7 @@ class DialogUtils {
             textAlign: TextAlign.center, // Center-align the text
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
+            borderRadius: BorderRadius.circular(18.0), // Adjust the radius as needed
           ),
           actions: [
             Center(
