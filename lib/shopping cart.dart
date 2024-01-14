@@ -66,35 +66,37 @@ class _ShoppingCartState extends State<ShoppingCart> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          'My Bag',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        Align(alignment: Alignment.bottomLeft,
+          child: Text(
+            'My Bag',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: items.length * 2 - 1,
+            itemCount: items.length,
             itemBuilder: (context, index) {
-              if (index.isOdd) {
-                return SizedBox(height: 20);
-              }
-              final cardIndex = index ~/ 2;
-              return CartItem(
-                index: cardIndex,
-                itemCount: itemQuantities[cardIndex],
-                unitPrice: items[cardIndex]['price'],
-                onItemAdded: _addItem,
-                onItemRemoved: _removeItem,
-                productName: items[cardIndex]['productName'],
-                productColor: items[cardIndex]['productColor'],
-                productSize: items[cardIndex]['productSize'],
-                imageURL: items[cardIndex]['imageURL'],
+              return Padding(
+                padding: EdgeInsets.only(bottom: 20.0), // Adjust the padding as needed
+                child: CartItem(
+                  index: index,
+                  itemCount: itemQuantities[index],
+                  unitPrice: items[index]['price'],
+                  onItemAdded: _addItem,
+                  onItemRemoved: _removeItem,
+                  productName: items[index]['productName'],
+                  productColor: items[index]['productColor'],
+                  productSize: items[index]['productSize'],
+                  imageURL: items[index]['imageURL'],
+                ),
               );
             },
           ),
         ),
+
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

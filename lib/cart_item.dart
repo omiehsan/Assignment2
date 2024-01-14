@@ -52,40 +52,48 @@ class _CartItemState extends State<CartItem> {
             Flexible(
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(widget.productName),
-                      Text(
-                        'Color: ${widget.productColor}, Size: ${widget.productSize}',
-                      ),
-                      Row(
-                        children: [
-                          _buildCounterButton(Icons.remove, widget.onItemRemoved),
-                          Text('${widget.itemCount}'),
-                          _buildCounterButton(Icons.add, widget.onItemAdded),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.more_vert_outlined),
-                            style:
-                            ButtonStyle(
-                              backgroundColor: Color(.)
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(widget.productName),
+                            Opacity(
+                              opacity: 0.5,
+                              child: Material(
+                                shape: CircleBorder(),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.more_vert_rounded),
+                                ),
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 8), // Add space here
-                        ],
-                      ),
-                      Text('\$${widget.unitPrice}'),
-                    ],
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Color: ${widget.productColor}, Size: ${widget.productSize}',
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                _buildCounterButton(Icons.remove, widget.onItemRemoved),
+                                Text('${widget.itemCount}'),
+                                _buildCounterButton(Icons.add, widget.onItemAdded),
+                              ],
+                            ),
+                            Text('\$${widget.unitPrice}'),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -122,4 +130,5 @@ class _CartItemState extends State<CartItem> {
     );
   }
 }
+
 
