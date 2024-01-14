@@ -14,12 +14,6 @@ class MyHomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {
-              // Handle the search button press
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.search),
             color: Colors.black,
             onPressed: () {
               // Handle the checkout button press

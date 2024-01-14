@@ -39,40 +39,63 @@ class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0), // Set your preferred border radius
+        borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 0,bottom: 0,right: 8,top: 0),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
             _buildImage(),
             SizedBox(width: 8),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Flexible(
+              child: Row(
                 children: [
-                  Text(widget.productName),
-                  Text(
-                    'Color: ${widget.productColor}, Size: ${widget.productSize}',
-                  ),
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildCounterButton(Icons.remove, widget.onItemRemoved),
-                      Text('${widget.itemCount}'),
-                      _buildCounterButton(Icons.add, widget.onItemAdded),
+                      Text(widget.productName),
+                      Text(
+                        'Color: ${widget.productColor}, Size: ${widget.productSize}',
+                      ),
+                      Row(
+                        children: [
+                          _buildCounterButton(Icons.remove, widget.onItemRemoved),
+                          Text('${widget.itemCount}'),
+                          _buildCounterButton(Icons.add, widget.onItemAdded),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.more_vert_outlined),
+                            style:
+                            ButtonStyle(
+                              backgroundColor: Color(.)
+                            ),
+                          ),
+                          SizedBox(width: 8), // Add space here
+                        ],
+                      ),
+                      Text('\$${widget.unitPrice}'),
                     ],
                   ),
                 ],
               ),
             ),
-            SizedBox(width: 8),
-            Text('\$${widget.unitPrice}'),
           ],
         ),
       ),
     );
   }
+
   Widget _buildImage() {
     return ClipRRect(
       borderRadius: BorderRadius.only(
@@ -99,3 +122,4 @@ class _CartItemState extends State<CartItem> {
     );
   }
 }
+
