@@ -66,12 +66,16 @@ class _ShoppingCartState extends State<ShoppingCart> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(alignment: Alignment.bottomLeft,
-          child: Text(
-            'My Bag',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              'My Bag',
+              style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -80,7 +84,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
             itemCount: items.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.only(bottom: 20.0), // Adjust the padding as needed
+                padding: const EdgeInsets.only(bottom: 8.0),
                 child: CartItem(
                   index: index,
                   itemCount: itemQuantities[index],
@@ -96,17 +100,31 @@ class _ShoppingCartState extends State<ShoppingCart> {
             },
           ),
         ),
-
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text('Total Price: \$${calculateTotalPrice().toStringAsFixed(2)}'),
-              ElevatedButton(
-                onPressed: () {
-                  showCheckoutDialog();
-                },
-                child: Text('Checkout'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Total Price:'),
+                  Text('\$${calculateTotalPrice().toStringAsFixed(2)}'),
+                ],
+              ),
+              SizedBox(height: 20,),
+              FractionallySizedBox(
+                widthFactor: .9,
+                child: ElevatedButton(
+                  onPressed: () {
+                    showCheckoutDialog();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    primary: Color(0xFFDB3022),
+                    padding: const EdgeInsets.symmetric(vertical: 14.0),
+                  ),
+                  child: const Text('CHECK OUT'),
+                ),
               ),
             ],
           ),

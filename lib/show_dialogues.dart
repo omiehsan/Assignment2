@@ -4,25 +4,42 @@ class DialogUtils {
   static void showCheckoutDialog(BuildContext context, List<Map<String, dynamic>> items, List<int> itemQuantities) {
     final amountBought = itemQuantities.reduce((sum, quantity) => sum + quantity);
 
-    // Generate a message for each item
-    final itemMessages = List<String>.generate(items.length, (index) {
-      return '${itemQuantities[index]} ${items[index]['productName']}';
-    });
-
-    final message = 'You have added $amountBought items to your bag:\n${itemMessages.join(", ")}';
+    final message = 'You have added\n $amountBought\n items to your bag.';
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Congratulations'),
-          content: Text(message),
+          title: Align(alignment: Alignment.center,child: Text('Congratulations!')),
+          content: Text(
+            message,
+            textAlign: TextAlign.center, // Center-align the text
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
+          ),
           actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
+            Center(
+              child: FractionallySizedBox(
+                widthFactor: 0.8, // Adjust the width factor as needed
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(),
+                      primary: const Color(0xFFDB3022), // Red color
+                      padding: const EdgeInsets.symmetric(vertical: 14.0), // Adjust padding for button height
+                    ),
+                    child: const Text(
+                      'OKAY',
+                      style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         );
@@ -36,13 +53,35 @@ class DialogUtils {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Added 5 Units'),
-          content: Text('You have added 5 $itemName items to your bag!'),
+          content: Text(
+            'You have added 5 $itemName to your bag!',
+            textAlign: TextAlign.center, // Center-align the text
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0), // Adjust the radius as needed
+          ),
           actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
+            Center(
+              child: FractionallySizedBox(
+                widthFactor: 0.8, // Adjust the width factor as needed
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(),
+                      primary: const Color(0xFFDB3022), // Red color
+                      padding: const EdgeInsets.symmetric(vertical: 14.0), // Adjust padding for button height
+                    ),
+                    child: const Text(
+                      'OKAY',
+                      style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         );

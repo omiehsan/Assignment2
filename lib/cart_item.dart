@@ -38,67 +38,119 @@ class _CartItemState extends State<CartItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            _buildImage(),
-            SizedBox(width: 8),
-            Flexible(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(widget.productName),
-                            Opacity(
-                              opacity: 0.5,
-                              child: Material(
-                                shape: CircleBorder(),
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.more_vert_rounded),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        // color: Colors.deepOrangeAccent,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: Row(
+            children: [
+              _buildImage(),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(widget.productName,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 16)),
+                              Opacity(
+                                opacity: 0.5,
+                                child: Material(
+                                  shape: const CircleBorder(),
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.more_vert_rounded),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Color: ${widget.productColor}, Size: ${widget.productSize}',
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                _buildCounterButton(Icons.remove, widget.onItemRemoved),
-                                Text('${widget.itemCount}'),
-                                _buildCounterButton(Icons.add, widget.onItemAdded),
-                              ],
-                            ),
-                            Text('\$${widget.unitPrice}'),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Opacity(
+                                        opacity: 0.5,
+                                        child: Text('Color: ',
+                                            style: TextStyle(fontSize: 11))),
+                                    Text('${widget.productColor}',
+                                        style: TextStyle(fontSize: 11)),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Opacity(
+                                        opacity: 0.5,
+                                        child: Text('Size: ',
+                                            style: TextStyle(fontSize: 11))),
+                                    Text('${widget.productSize}',
+                                        style: TextStyle(fontSize: 11)),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                  ],
+                                ),
+                              ),
+                            ],
+
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Opacity(
+                                      opacity: 0.5,
+                                      child: Material(
+                                          shape: const CircleBorder(),
+                                          elevation: 1.5,
+                                          child: _buildCounterButton(
+                                              Icons.remove, widget.onItemRemoved))),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('${widget.itemCount}',style:TextStyle(fontSize: 14)),
+                                  ),
+                                  Opacity(
+                                      opacity: 0.5,
+                                      child: Material(
+                                          shape: const CircleBorder(),
+                                          elevation: 1.5,
+                                          child: _buildCounterButton(
+                                              Icons.add, widget.onItemAdded))),
+                                ],
+                              ),
+                              Text('\$${widget.unitPrice}',style: TextStyle(fontSize: 14),),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -106,13 +158,13 @@ class _CartItemState extends State<CartItem> {
 
   Widget _buildImage() {
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(8.0),
         bottomLeft: Radius.circular(8.0),
       ),
       child: Container(
-        width: 100,
-        height: 100,
+        width: 109,
+        height: 109,
         child: Image.network(
           imageURLController.text,
           fit: BoxFit.cover,
@@ -130,5 +182,3 @@ class _CartItemState extends State<CartItem> {
     );
   }
 }
-
-
