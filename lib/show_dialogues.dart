@@ -29,7 +29,7 @@ class DialogUtils {
         return AlertDialog(
           title: const Text('Congratulation!', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18), textAlign: TextAlign.center),
           content: Text(
-            'You have added\n 5 $itemName \nto your bag!', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            'You have added\n 5 $itemName \nto your bag!', style: const TextStyle(fontSize: 18),
             textAlign: TextAlign.center,
           ),
           shape: RoundedRectangleBorder(
