@@ -1,5 +1,5 @@
+import 'package:assignment_2/shopping%20cart.dart';
 import 'package:flutter/material.dart';
-import 'shopping cart.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -16,12 +16,15 @@ class MyHomePage extends StatelessWidget {
             icon: const Icon(Icons.search),
             color: Colors.black,
             onPressed: () {
-              // Handle the checkout button press
             },
           ),
         ],
       ),
-      body:ShoppingCart(),
+      body: FractionallySizedBox(
+        widthFactor: 1.0,
+        alignment: Alignment.center,
+        child: ShoppingCart(),
+      ),
     );
   }
 }

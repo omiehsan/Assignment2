@@ -41,7 +41,6 @@ class _CartItemState extends State<CartItem> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        // color: Colors.deepOrangeAccent,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
@@ -62,15 +61,18 @@ class _CartItemState extends State<CartItem> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(widget.productName,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.bold, fontSize: 16)),
                               Opacity(
                                 opacity: 0.5,
                                 child: Material(
                                   shape: const CircleBorder(),
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(Icons.more_vert_rounded),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(Icons.more_vert_rounded),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -86,8 +88,8 @@ class _CartItemState extends State<CartItem> {
                                         opacity: 0.5,
                                         child: Text('Color: ',
                                             style: TextStyle(fontSize: 11))),
-                                    Text('${widget.productColor}',
-                                        style: TextStyle(fontSize: 11)),
+                                    Text(widget.productColor,
+                                        style: const TextStyle(fontSize: 11)),
                                   ],
                                 ),
                               ),
@@ -99,22 +101,19 @@ class _CartItemState extends State<CartItem> {
                                         opacity: 0.5,
                                         child: Text('Size: ',
                                             style: TextStyle(fontSize: 11))),
-                                    Text('${widget.productSize}',
-                                        style: TextStyle(fontSize: 11)),
+                                    Text(widget.productSize,
+                                        style: const TextStyle(fontSize: 11)),
                                   ],
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                  ],
+                                  children: [],
                                 ),
                               ),
                             ],
-
                           ),
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -129,7 +128,7 @@ class _CartItemState extends State<CartItem> {
                                               Icons.remove, widget.onItemRemoved))),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text('${widget.itemCount}',style:TextStyle(fontSize: 14)),
+                                    child: Text('${widget.itemCount}',style:const TextStyle(fontSize: 14)),
                                   ),
                                   Opacity(
                                       opacity: 0.5,
@@ -140,7 +139,7 @@ class _CartItemState extends State<CartItem> {
                                               Icons.add, widget.onItemAdded))),
                                 ],
                               ),
-                              Text('\$${widget.unitPrice}',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                              Text('\$${widget.unitPrice}',style: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
                             ],
                           ),
                         ],
@@ -162,9 +161,9 @@ class _CartItemState extends State<CartItem> {
         topLeft: Radius.circular(8.0),
         bottomLeft: Radius.circular(8.0),
       ),
-      child: Container(
-        width: 109,
-        height: 109,
+      child: SizedBox(
+        width: 104,
+        height: 104,
         child: Image.network(
           imageURLController.text,
           fit: BoxFit.cover,

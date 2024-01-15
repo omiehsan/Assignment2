@@ -45,8 +45,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
 
   void _removeItem(int index) {
     setState(() {
-      itemQuantities[index] =
-      (itemQuantities[index] > 0) ? itemQuantities[index] - 1 : 0;
+      itemQuantities[index] = (itemQuantities[index] > 0) ? itemQuantities[index] - 1 : 0;
     });
   }
 
@@ -58,7 +57,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
     return totalPrice;
   }
 
-  void showCheckoutDialog() {
+  void showCheckoutDialog(BuildContext context) {
     DialogUtils.showCheckoutDialog(context, items, itemQuantities);
   }
 
@@ -66,8 +65,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8),
+        const Padding(
+          padding: EdgeInsets.all(8),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: Text(
@@ -107,20 +106,23 @@ class _ShoppingCartState extends State<ShoppingCart> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Total Price:'),
-                  Text('\$${calculateTotalPrice().toStringAsFixed(2)}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                  const Text('Total Price:'),
+                  Text(
+                    '\$${calculateTotalPrice().toStringAsFixed(2)}',
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
                 ],
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20),
               FractionallySizedBox(
                 widthFactor: .9,
                 child: ElevatedButton(
                   onPressed: () {
-                    showCheckoutDialog();
+                    showCheckoutDialog(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(),
-                    primary: Color(0xFFDB3022),
+                    shape: const StadiumBorder(),
+                    primary: const Color(0xFFDB3022),
                     padding: const EdgeInsets.symmetric(vertical: 14.0),
                   ),
                   child: const Text('CHECK OUT'),
